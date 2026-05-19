@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="auth-section">
+        <div class="auth-container">
+            <h1 class="auth-title">Запустимось разом! 🎉</h1>
+            <p class="auth-subtitle">Реєстрація займе всього хвилинку</p>
+
+            {% if error %}
+            <div class="error-message">{{ error }}</div>
+            {% endif %}
+
+            <form class="auth-form" method="POST">
+                <!-- CSRF токен для безпеки -->
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                <div class="form-group">
+                    <label for="username">Ім'я користувача</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="твоє ім'я (3-50 символів)" 
+                        required
+                        minlength="3"
+                        maxlength="50"
+                        pattern="^[a-zA-Zа-яА-Я0-9_-]+$"
+                        title="Тільки букви, цифри, _, -"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="твій email" 
+                        required
+                        maxlength="120"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Мінімум 8 символів, 1 велика буква, 1 цифра" 
+                        required
+                        minlength="8"
+                        maxlength="128"
+                    >
+                    <small>🔒 Пароль повинен містити букви та цифри</small>
+                </div>
+
+                <button type="submit" class="btn btn-primary full-width">
+                    Реєструватись 🚀
+                </button>
+            </form>
+
+            <p class="auth-switch">
+                Вже маєш акаунт? 
+                <a href="{{ url_for('login') }}">Увійди</a>
+            </p>
+        </div>
+    </section>
+{% endblock %}

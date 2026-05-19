@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="catalog-section">
+        <div class="section-container">
+            <h1 class="section-title">Знайди свого друга 🐾</h1>
+
+            <div class="catalog-wrapper">
+                <!-- Sidebar Filters -->
+                <aside class="filters-sidebar">
+                    <div class="filter-group">
+                        <label class="filter-label">Вид тварин</label>
+                        <div class="pet-type-buttons">
+                            <button class="type-btn active" data-type="cats">🐱 Кішки</button>
+                            <button class="type-btn" data-type="dogs">🐶 Собаки</button>
+                            <button class="type-btn" data-type="exotic">🐰 Екзотичні</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="breed" class="filter-label">Порода</label>
+                        <input type="text" id="breed" class="filter-input" placeholder="Пошук по породі...">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="gender" class="filter-label">Стать</label>
+                        <select id="gender" class="filter-select">
+                            <option value="">Все</option>
+                            <option value="М">Хлопчик (М)</option>
+                            <option value="Ж">Дівчинка (Ж)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="age" class="filter-label">Вік</label>
+                        <select id="age" class="filter-select">
+                            <option value="">Все</option>
+                            <option value="1">1 рік</option>
+                            <option value="2">2 роки</option>
+                            <option value="3">3 роки</option>
+                            <option value="4">4 роки</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="color" class="filter-label">Колір</label>
+                        <input type="text" id="color" class="filter-input" placeholder="Пошук по кольору...">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="sort" class="filter-label">Сортування</label>
+                        <select id="sort" class="filter-select">
+                            <option value="name">За ім'ям (A-Z)</option>
+                            <option value="price_asc">За ціною (↑)</option>
+                            <option value="price_desc">За ціною (↓)</option>
+                            <option value="age_asc">За віком (молодші)</option>
+                            <option value="age_desc">За віком (старші)</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-secondary full-width" onclick="resetFilters()">
+                        Скинути фільтри ⟲
+                    </button>
+                </aside>
+
+                <!-- Pets Grid -->
+                <main class="pets-grid-wrapper">
+                    <div id="petsGrid" class="pets-grid"></div>
+                </main>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='catalog.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetFamily - Знайди домашнього улюбленця</title>
+    <meta name="description" content="Платформа для адоптування котиків, собачок та екзотичних тварин. Зменш самотність новою дружбою!">
+    <link rel="stylesheet" href="/static/style.css">
+    
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="background">
+        <canvas id="canvas"></canvas>
+        <div class="gradient-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">🐾</span>
+                <span class="logo-text">PetFamily</span>
+            </a>
+            <div class="nav-links">
+                <a href="/catalog" class="nav-link">Каталог</a>
+                
+                <a href="/register" class="nav-link">Реєстрація</a>
+                <a href="/login" class="nav-link">Вхід</a>
+                
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="gradient-text">Ти почуваєш себе самотньо?</span>
+            </h1>
+            <p class="hero-description">
+                Знайди свого найращого друга!
+            </p>
+            <p class="hero-subtitle">
+                Кошенята, щенята та екзотичні тварини чекають на тебе. Обери за серцем!
+            </p>
+            <div class="hero-buttons">
+                <a href="/catalog" class="btn btn-primary">
+                    <span>Почати пошук</span>
+                    <span class="btn-icon">→</span>
+                </a>
+                
+                <a href="/register" class="btn btn-secondary">
+                    <span>Реєструватись</span>
+                </a>
+                
+            </div>
+        </div>
+        
+        <div class="hero-animation">
+            <img src="/static/images/fox_static.png" alt="3D Fox" class="fox-static-img">
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="section-container">
+            <h2 class="section-title">Чому PetFamily?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">❤️</div>
+                    <h3>Дружба на все життя</h3>
+                    <p>Кожен улюбленець - це новий друг, який завжди буде з тобою</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Знаходиш дома</h3>
+                    <p>Вибирай з великого різноманіття порід та видів</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💚</div>
+                    <h3>Здорові тварини</h3>
+                    <p>Всі наші улюбленці перевірені ветеринаром</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎁</div>
+                    <h3>Легкі замовлення</h3>
+                    <p>Швидкий та простий процес адоптування з доставкою</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container" id="stats">
+            <div class="stat-card">
+                <div class="stat-number" data-target="2847">0</div>
+                <div class="stat-label">Щасливих людей</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="520">0</div>
+                <div class="stat-label">Улюбленців знайдено</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="98">0%</div>
+                <div class="stat-label">Задоволених клієнтів</div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>🐾 PetFamily - Платформа для знаходження другів | Будь ніколи не самотній!</p>
+            <p class="footer-subtitle">Створено у 2026 році, щоб кожне серце знайшло свого вірного друга ✨</p>
+        </div>
+    </footer>
+
+    <!-- Floating Social Links -->
+    <div class="social-floating">
+        <a href="/" class="social-item instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="/" class="social-item telegram" title="Telegram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </a>
+        <a href="/" class="social-item github" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+    </div>
+
+    <script src="/static/script.js"></script>
+    
+</body>
+
+</html>

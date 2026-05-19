@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="auth-section">
+        <div class="auth-container">
+            <h1 class="auth-title">З поворотом! 👋</h1>
+            <p class="auth-subtitle">Увійди в свій акаунт та знайди свого друга</p>
+
+            {% if error %}
+            <div class="error-message">{{ error }}</div>
+            {% endif %}
+
+            <form class="auth-form" method="POST">
+                <!-- CSRF токен -->
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                <div class="form-group">
+                    <label for="username">Ім'я користувача</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="твоє ім'я" 
+                        required
+                        autocomplete="username"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="твій пароль" 
+                        required
+                        autocomplete="current-password"
+                    >
+                </div>
+
+                <button type="submit" class="btn btn-primary full-width">
+                    Увійти 🔓
+                </button>
+            </form>
+
+            <p class="auth-switch">
+                Немаєш акаунту? 
+                <a href="{{ url_for('register') }}">Реєструйся зараз</a>
+            </p>
+        </div>
+    </section>
+{% endblock %}

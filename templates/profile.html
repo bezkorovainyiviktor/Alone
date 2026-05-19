@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="profile-section">
+        <div class="section-container">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <div class="profile-avatar">{{ username[0]|upper }}</div>
+                    <h1>{{ username }}</h1>
+                    <p class="profile-subtitle">Мій профіль на PetFamily</p>
+                </div>
+
+                <div class="profile-content">
+                    <div class="profile-card">
+                        <h3>👤 Інформація профіля</h3>
+                        <p><strong>Ім'я користувача:</strong> {{ username }}</p>
+                        <p><strong>Email:</strong> {{ user_data.email }}</p>
+                        <p><strong>Дата реєстрації:</strong> {{ user_data.created_at|format_date('%d.%m.%Y') }}</p>
+                    </div>
+
+                    <div class="profile-card">
+                        <h3>📊 Твоя статистика</h3>
+                        <p><strong>Загальних замовлень:</strong> {{ user_data.orders_count }}</p>
+                        <p><strong>Сімей тварин:</strong> {{ user_data.orders_count }}</p>
+                        <p><strong>Люблять тебе:</strong> ∞ 🐾</p>
+                    </div>
+
+                    <div class="profile-card">
+                        <h3>🎯 Рекомендації</h3>
+                        <ul>
+                            <li>Переглянь наш каталог та знайди свого ідеального друга</li>
+                            <li>Прочитай про правильний догляд за домашніми тваринами</li>
+                            <li>Приєднайся до нашої спільноти</li>
+                        </ul>
+                    </div>
+
+                    <div class="profile-actions">
+                        <a href="{{ url_for('catalog') }}" class="btn btn-primary">
+                            Шукати друга
+                        </a>
+                        <a href="{{ url_for('my_orders') }}" class="btn btn-secondary">
+                            Мої замовлення
+                        </a>
+                        <a href="{{ url_for('logout') }}" class="btn btn-secondary">
+                            Вийти з акаунту
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

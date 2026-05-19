@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="orders-section">
+        <div class="section-container">
+            <h1 class="section-title">Мої замовлення 📦</h1>
+
+            {% if orders %}
+                <div class="orders-list">
+                    {% for order in orders %}
+                    <div class="order-card">
+                        <div class="order-header">
+                            <h3>{{ order.pet_name }}</h3>
+                            <span class="order-number">#{{ order.id }}</span>
+                        </div>
+                        
+                        <div class="order-body">
+                            <p><strong>Дата:</strong> {{ order.date|format_date }}</p>
+                            <p><strong>Контакт:</strong> {{ order.phone }}</p>
+                            <p><strong>Адреса:</strong> {{ order.address }}</p>
+                            <p><strong>Вартість:</strong> ₴ {{ "{:,.2f}".format(order.price) }}</p>
+                        </div>
+
+                        <div class="order-status">
+                            {% if order.status == 'pending' %}
+                                <span class="status pending">⏳ Очікує підтвердження</span>
+                            {% elif order.status == 'confirmed' %}
+                                <span class="status confirmed">✓ Підтверджено</span>
+                            {% elif order.status == 'completed' %}
+                                <span class="status completed">🎉 Завершено</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="no-orders">
+                    <p>😢 У тебе ще нема жодного замовлення</p>
+                    <a href="{{ url_for('catalog') }}" class="btn btn-primary">
+                        Знайти свого друга
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

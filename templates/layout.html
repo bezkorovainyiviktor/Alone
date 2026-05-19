@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title | default('🐾 PetFamily - Знайди свого друга') }}</title>
+    <meta name="description" content="{{ page_description | default('Платформа для адоптування домашніх тварин. Знайди нового друга сьогодні!') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="background">
+        <canvas id="canvas"></canvas>
+        <div class="gradient-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="logo">
+                <span class="logo-icon">🐾</span>
+                <span class="logo-text">PetFamily</span>
+            </a>
+            <div class="nav-links">
+                <a href="{{ url_for('catalog') }}" class="nav-link">Каталог</a>
+                {% if session.user_id %}
+                <a href="{{ url_for('my_orders') }}" class="nav-link">Замовлення</a>
+                <a href="{{ url_for('profile') }}" class="nav-link">Профіль ({{ session.user_id }})</a>
+                <a href="{{ url_for('logout') }}" class="nav-link">Вихід</a>
+                {% else %}
+                <a href="{{ url_for('register') }}" class="nav-link">Реєстрація</a>
+                <a href="{{ url_for('login') }}" class="nav-link">Вхід</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>🐾 PetFamily - Платформа для знаходження другів | Будь ніколи не самотній!</p>
+            <p class="footer-subtitle">Створено у 2026 році, щоб кожне серце знайшло свого вірного друга ✨</p>
+        </div>
+    </footer>
+
+    <!-- Floating Social Links -->
+    <div class="social-floating">
+        <a href="{{ url_for('index') }}" class="social-item instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="{{ url_for('index') }}" class="social-item telegram" title="Telegram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </a>
+        <a href="{{ url_for('index') }}" class="social-item github" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

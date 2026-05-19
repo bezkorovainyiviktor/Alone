@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="order-section">
+        <div class="section-container">
+            <div class="order-wrapper">
+                <div class="order-info">
+                    <h2>Замовлення {{ pet.name }}</h2>
+                    <div class="order-pet-photo">
+                        <img src="{{ pet.image_url }}" alt="{{ pet.name }}" class="order-pet-img">
+                    </div>
+                    <div class="order-summary">
+                        <p><strong>Тварина:</strong> {{ pet.name }} ({{ pet.breed }})</p>
+                        <p><strong>Ціна:</strong> ₴ {{ "{:,.0f}".format(pet.price) }}</p>
+                    </div>
+                </div>
+
+                <form class="order-form" method="POST">
+                    <!-- CSRF token -->
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="pet_id" value="{{ pet.id }}">
+                    <h3>Твої контактні дані</h3>
+
+                    {% if error %}
+                    <div class="error-message">{{ error }}</div>
+                    {% endif %}
+
+                    <div class="form-group">
+                        <label for="name">Повне ім'я *</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            placeholder="Твоє повне ім'я" 
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Номер телефону *</label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            placeholder="+380 (XX) XXX-XXXX" 
+                            required
+                            pattern="\+?38\s?(\(?\d{3}\)?)?[\s.-]?\d{3}[\s.-]?\d{2}[\s.-]?\d{2}"
+                        >
+                        <small>Ми зателефонуємо на цей номер для підтвердження</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="твій email" 
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Адреса доставки *</label>
+                        <input 
+                            type="text" 
+                            id="address" 
+                            name="address" 
+                            placeholder="Місто, вулиця, будинок" 
+                            required
+                        >
+                    </div>
+
+                    <div class="payment-info">
+                        <h4>Оплата</h4>
+                        <p>Вартість доставки: ₴ 100</p>
+                        <p class="total-price">Загалом до сплати: ₴ {{ "{:,.0f}".format(pet.price + 100) }}</p>
+                        <p class="payment-note">💳 Оплата відбувається після підтвердження замовлення</p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary full-width">
+                        Підтвердити замовлення ✓
+                    </button>
+
+                    <a href="{{ url_for('catalog') }}" class="btn btn-secondary full-width">
+                        Скасувати
+                    </a>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="detail-section">
+        <div class="section-container">
+            <a href="{{ url_for('catalog') }}" class="back-link">← Повернутись до каталогу</a>
+
+            <div class="detail-wrapper">
+                <div class="pet-detail-image">
+                    <img src="{{ pet.image_url }}" alt="{{ pet.name }}" class="detail-photo">
+                </div>
+
+                <div class="pet-detail-info">
+                    <h1 class="pet-detail-name">{{ pet.name }} {{ pet.emoji }}</h1>
+                    
+                    <div class="detail-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Порода:</span>
+                            <span class="spec-value">{{ pet.breed }}</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Стать:</span>
+                            <span class="spec-value">{{ '♂️ Хлопчик' if pet.gender == 'М' else '♀️ Дівчинка' }}</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Вік:</span>
+                            <span class="spec-value">{{ pet.age }} років</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Колір:</span>
+                            <span class="spec-value">{{ pet.color }}</span>
+                        </div>
+                    </div>
+
+                    <p class="pet-description-full">{{ pet.description }}</p>
+
+                    <div class="price-section">
+                        <span class="price-label">Ціна:</span>
+                        <span class="price-value">₴ {{ "{:,.0f}".format(pet.price) }}</span>
+                    </div>
+
+                    {% if session.user_id %}
+                        <a href="{{ url_for('order', pet_type=pet_type, pet_id=pet.id) }}" class="btn btn-primary full-width">
+                            Замовити {{ pet.name }} 🛒
+                        </a>
+                    {% else %}
+                        <p class="auth-required">💡 Щоб замовити, потрібно увійти в акаунт</p>
+                        <a href="{{ url_for('login') }}" class="btn btn-secondary full-width">
+                            Увійти або Реєструватись
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

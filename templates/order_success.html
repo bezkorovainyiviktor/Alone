@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="success-section">
+        <div class="section-container">
+            <div class="success-container">
+                <div class="success-icon">🎉</div>
+                <h1>Замовлення підтверджено!</h1>
+                <p class="success-subtitle">Вітаємо! Твоя нова дружба вже близько! 🐾</p>
+
+                <div class="order-details">
+                    <h3>Деталі замовлення</h3>
+                    <div class="detail-item">
+                        <span class="label">Номер замовлення:</span>
+                        <span class="value">#{{ order.id }}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Твоя нова дружба:</span>
+                        <span class="value">{{ order.pet_name }}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Вартість:</span>
+                        <span class="value">₴ {{ "{:,.2f}".format(order.price) }}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Дата замовлення:</span>
+                        <span class="value">{{ order.date|format_date }}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Статус:</span>
+                        <span class="value status">⏳ Очікує підтвердження</span>
+                    </div>
+                </div>
+
+                <div class="next-steps">
+                    <h3>Що далі?</h3>
+                    <ol>
+                        <li>Ми зателефонуємо на номер <strong>{{ order.phone }}</strong></li>
+                        <li>Підтвердимо деталі замовлення та спосіб оплати</li>
+                        <li>Домовимось про час зустрічі з твоїм новим другом 🎁</li>
+                    </ol>
+                </div>
+
+                <div class="actions">
+                    <a href="{{ url_for('my_orders') }}" class="btn btn-primary">
+                        Переглянути замовлення
+                    </a>
+                    <a href="{{ url_for('catalog') }}" class="btn btn-secondary">
+                        До каталогу
+                    </a>
+                </div>
+
+                <p class="thank-you">Дякуємо за довіру! ❤️</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
