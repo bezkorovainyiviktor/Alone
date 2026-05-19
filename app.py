@@ -719,8 +719,10 @@ def init_db():
             db.session.commit()
             logger.info("Database seeded successfully.")
 
+# Ініціалізація БД (виклик для gunicorn)
+init_db()
+
 if __name__ == '__main__':
-    init_db()
     # ВАЖНО: debug=False в продакшені!
     app.run(
         debug=os.environ.get('FLASK_ENV') == 'development',
